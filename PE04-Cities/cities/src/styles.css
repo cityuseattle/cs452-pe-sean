@@ -1,0 +1,174 @@
+/* Root color palette */
+:root {
+    --accent: #0077cc;
+    --accent-light: #3399ff;
+    --muted: #6b7280;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --border: #e0e0e0;
+  }
+  
+  /* Global resets */
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* App container */
+  .app {
+    max-width: 1100px;
+    margin: 2rem auto;
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  
+  /* Header styling */
+  .header {
+    background: linear-gradient(90deg, #0ea5e9, #6366f1);
+    padding: 1.5rem 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .navlist {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navlist a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+  }
+  
+  .navlist a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Main content area */
+  .main {
+    padding: 2rem;
+  }
+  
+  /* Two-column layout for Cities List + Details */
+  .cities-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.75rem;
+  }
+  
+  /* Left column (Cities List) */
+  .list-section {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    min-height: 320px;
+  }
+  
+  .cities-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .cities-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .cities-list a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  
+  .cities-list a:hover {
+    color: var(--accent-light);
+  }
+  
+  /* Right column (City Details placeholder / details) */
+  .details-section {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    min-height: 320px;
+  }
+  
+  .city-details h2 {
+    margin-top: 0;
+  }
+  
+  /* Add City page styles */
+  .add-city {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  
+  .city-form {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .city-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .city-form input,
+  .city-form textarea {
+    margin-top: 0.4rem;
+    padding: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  
+  .city-form textarea {
+    resize: vertical;
+    height: 80px;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: var(--accent-light);
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 1rem;
+    background: #f1f5f9;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+  }
+  
