@@ -1,16 +1,23 @@
-import React from "react";
-import RecipeItem from "./RecipeItem";
+import { Link, Outlet } from "react-router-dom";
 
-export default function RecipeList({ recipes }) {
+export default function RecipeList({ recipes = [] }) {
   if (recipes.length === 0) {
-    return <p className="no-results">Search for a recipe above!</p>;
+    return <p>No recipes found. Try searching above.</p>;
   }
 
   return (
-    <div className="recipe-grid">
-      {recipes.map((meal) => (
-        <RecipeItem key={meal.idMeal} recipe={meal} />
-      ))}
+    <div>
+      <h2>Recipe List</h2>
+      <ul>
+        {recipes.map(recipe => (
+          <li key={recipe.id}>
+            <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* Nested route renders here */}
+      <Outlet />
     </div>
   );
 }

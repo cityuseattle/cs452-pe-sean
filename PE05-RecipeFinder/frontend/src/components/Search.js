@@ -1,34 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Search({ onSearch }) {
-  const [term, setTerm] = useState("");
+  const [query, setQuery] = useState("");
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(term);
-  }
+    onSearch(query);
+  };
 
   return (
-    <div className="search-area">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={term}
-          onChange={(e) => setTerm(e.target.value)}
-          className="search-input"
-        />
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search recipes..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <button type="submit">Search</button>
 
-        <button type="submit" className="search-button">
-          Search
-        </button>
-      </form>
-
-      <div className="quick-buttons">
-        <button onClick={() => onSearch("chicken")}>Chicken</button>
-        <button onClick={() => onSearch("beef")}>Beef</button>
-        <button onClick={() => onSearch("vegetarian")}>Vegetarian</button>
+      <div style={{ marginTop: "10px" }}>
+        <button type="button" onClick={() => onSearch("chicken")}>Chicken</button>
+        <button type="button" onClick={() => onSearch("beef")}>Beef</button>
+        <button type="button" onClick={() => onSearch("vegetarian")}>Vegetarian</button>
       </div>
-    </div>
+    </form>
   );
 }

@@ -1,28 +1,57 @@
-import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Search from "./components/Search";
 import RecipeList from "./components/RecipeList";
+import RecipeItem from "./components/RecipeItem";
+import "./App.css";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
 
-  async function fetchRecipes(term) {
-    if (!term) return;
+  const handleSearch = (query) => {
+    const mockRecipes = [
+      {
+        id: "1",
+        name: "Chicken Alfredo",
+        category: "Chicken",
+        details: "Creamy chicken pasta.",
+      },
+      {
+        id: "2",
+        name: "Beef Tacos",
+        category: "Beef",
+        details: "Spicy beef tacos.",
+      },
+      {
+        id: "3",
+        name: "Vegetable Stir Fry",
+        category: "Vegetarian",
+        details: "Mixed veggies with sauce.",
+      },
+    ];
 
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
+    const filtered = mockRecipes.filter(
+      (r) =>
+        r.name.toLowerCase().includes(query.toLowerCase()) ||
+        r.category.toLowerCase().includes(query.toLowerCase())
     );
 
-    const data = await response.json();
-    setRecipes(data.meals || []); // meals can be null
-  }
+    setRecipes(filtered);
+  };
 
   return (
     <div className="container">
-      <h1>🍽️ Recipe Finder</h1>
+      <h1>Recipe Finder</h1>
+      <Search onSearch={handleSearch} />
 
-      <Search onSearch={fetchRecipes} />
-
-      <RecipeList recipes={recipes} />
+      <Routes>
+        <Route path="/" element={<RecipeList recipes={recipes} />}>
+          <Route
+            path="recipes/:id"
+            element={<RecipeItem recipes={recipes} />}
+          />
+        </Route>
+      </Routes>
     </div>
   );
 }
